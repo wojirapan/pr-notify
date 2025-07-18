@@ -1,0 +1,198 @@
+/* Custom Styles for PR-Notify */
+
+/* Global Styles */
+body {
+    font-family: 'Sarabun', 'Prompt', 'Kanit', sans-serif;
+}
+
+/* Dashboard Cards */
+.dashboard-card {
+    transition: transform 0.3s;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card .card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    font-weight: 600;
+}
+
+.dashboard-card .card-body {
+    padding: 1.25rem;
+}
+
+.dashboard-stats {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.stats-icon {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: white;
+    margin-right: 15px;
+}
+
+.stats-icon.pending {
+    background-color: #ffc107;
+}
+
+.stats-icon.in-progress {
+    background-color: #0d6efd;
+}
+
+.stats-icon.completed {
+    background-color: #198754;
+}
+
+/* Form Controls */
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Status Pills */
+.status-pill {
+    padding: 0.25rem 0.75rem;
+    border-radius: 50rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-in-progress {
+    background-color: #cfe2ff;
+    color: #0d6efd;
+}
+
+.status-completed {
+    background-color: #d1e7dd;
+    color: #198754;
+}
+
+/* Activity Cards */
+.activity-card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.activity-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.activity-card .card-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    border-bottom: 1px solid #e3e6f0;
+}
+
+/* Custom Table */
+.custom-table th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+.custom-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Calendar */
+#calendar {
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+.fc-event {
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Login & Register Forms */
+.auth-form {
+    max-width: 450px;
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.auth-form .form-floating {
+    margin-bottom: 15px;
+}
+
+.auth-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.auth-logo i {
+    font-size: 3rem;
+    color: #0d6efd;
+}
+
+/* Notification Dropdown */
+.notification-dropdown {
+    width: 300px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.notification-dropdown .dropdown-item {
+    white-space: normal;
+    padding: 10px 15px;
+}
+
+/* Image Gallery */
+.activity-image {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.activity-image:hover {
+    transform: scale(1.03);
+}
+
+/* Responsive Table */
+@media (max-width: 767.98px) {
+    .responsive-table {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+
+/* Card Status Indicator */
+.card-status {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
