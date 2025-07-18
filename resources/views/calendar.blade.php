@@ -92,6 +92,65 @@
                     container: 'body'
                 });
             },
+            eventsSet: function(events) {
+                console.log('Events loaded:', events.length);
+                
+                // ลบ CSS rules เก่าก่อน
+                const existingStyle = document.getElementById('event-count-style');
+                if (existingStyle) {
+                    existingStyle.remove();
+                }
+                
+                // นับจำนวนงานในแต่ละวัน
+                const eventCounts = {};
+                events.forEach(event => {
+                    const dateStr = event.start.toISOString().split('T')[0];
+                    eventCounts[dateStr] = (eventCounts[dateStr] || 0) + 1;
+                    console.log('Event on date:', dateStr, 'Count:', eventCounts[dateStr]);
+                });
+                
+                // สร้าง CSS dynamically
+                let cssRules = '';
+                Object.keys(eventCounts).forEach(dateStr => {
+                    if (eventCounts[dateStr] > 0) {
+                        cssRules += `
+                            .fc-daygrid-day[data-date="${dateStr}"]:after {
+                                content: "${eventCounts[dateStr]} งาน";
+                                position: absolute;
+                                bottom: 2px;
+                                left: 2px;
+                                background-color: #dc3545;
+                                color: white;
+                                padding: 2px 6px;
+                                border-radius: 10px;
+                                font-size: 12px;
+                                font-weight: bold;
+                                z-index: 10;
+                                pointer-events: none;
+                                display: block;
+                            }
+                        `;
+                        console.log('Adding CSS rule for date:', dateStr, 'with count:', eventCounts[dateStr]);
+                    }
+                });
+                
+                // เพิ่ม CSS ใหม่
+                if (cssRules) {
+                    const style = document.createElement('style');
+                    style.id = 'event-count-style';
+                    style.textContent = cssRules;
+                    document.head.appendChild(style);
+                }
+                
+                console.log('CSS rules created for dates:', Object.keys(eventCounts));
+            },
+            datesSet: function(info) {
+                // ลบ CSS rules เก่าออกเมื่อเปลี่ยนเดือน
+                const existingStyle = document.getElementById('event-count-style');
+                if (existingStyle) {
+                    existingStyle.remove();
+                }
+            },
             loading: function(isLoading) {
                 if (isLoading) {
                     // แสดง loading indicator
@@ -106,4 +165,35 @@
         calendar.render();
     });
 </script>
+
+<style>
+.fc-daygrid-day {
+    position: relative !important;
+}
+
+.event-count-badge {
+    z-index: 10 !important;
+}
+
+.fc-event-title {
+    font-size: 12px;
+}
+
+.fc-daygrid-event {
+    font-size: 11px;
+}
+
+/* เพิ่มสไตล์สำหรับปฏิทินให้สวยงาม */
+.fc-daygrid-day:hover {
+    background-color: #f8f9fa;
+}
+
+.fc-day-today {
+    background-color: #e3f2fd !important;
+}
+
+.fc-daygrid-day-number {
+    font-weight: 500;
+}
+</style>
 @endsection

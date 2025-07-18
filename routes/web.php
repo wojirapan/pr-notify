@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
     // Calendar
     Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
     Route::get('/calendar/events', [CalendarController::class, 'getEvents'])->name('calendar.events');
+    Route::get('/calendar/day-counts', [CalendarController::class, 'getDayCellContent'])->name('calendar.dayCounts');
     
     // User Profile
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
